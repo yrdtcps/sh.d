@@ -1,0 +1,42 @@
+#!/bin/bash
+#Date:2015-6-19
+#Auther yangruidong
+#Version:1.1
+#description:find the symbolic link file's final object.
+if [ $# -lt 1 ] ; then
+	echo "Please input a file to analasys!"
+	exit 1
+fi
+do_proc () {
+Obj=$1
+Final=
+Str=$Obj
+Ret=0
+i=0
+while [ $Ret == 0 ] ; do
+	cd $(dirname $Obj)
+	Obj=$(readlink $Obj)
+	if [ $? == 0 ] ; then
+		Str=${Str}' ==> '$Obj
+		Final=$Obj
+	else
+		Ret=1
+	fi
+	i=$(($i + 1))
+done
+if [ $i == 1 ] ; then
+	Final=$1
+else
+	echo $Str
+fi
+file $(basename $Final)
+}
+
+#for (( k=1;k<=$#;k=k+1 ));do
+#	echo $@
+#done
+#do_proc $1
+for var in $* ; do
+	if [ $var
+	do_proc $var
+done
