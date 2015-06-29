@@ -37,6 +37,5 @@ file $(basename $Final)
 #done
 #do_proc $1
 for var in $* ; do
-	if [ $var
 	do_proc $var
 done
