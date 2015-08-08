@@ -6,12 +6,4 @@ alias xseq='/home/yrd/sh.d/xseq.sh'
 echo "--- alias xseq='/home/yrd/sh.d/xseq.sh'"
 fi
 
-#echo "b--PS1=$PS1"
-
-#if [ "${PS1:${#PS1}-3:3}" == "\\\$ " ]; then
-if [ "${PS1: -3:3}" == "\\\$ " ]; then
-PS1='\[\e[32;1m\]'$PS1'\[\e[0m\]'
-echo "--- PS1='$PS1'"
-fi
-
-#echo "a--PS1=$PS1"
+source $HOME/sh.d/chshcolor.sh $1

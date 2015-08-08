@@ -1,0 +1,23 @@
+#!/bin/bash
+#Auther:Yrd
+#Date:2015-7-3
+#Description:ct is used to replace a string from a file or files recursive in a directory.
+echo $1
+echo $2 
+echo $3
+echo ------------------------------
+para1=${1//\//\\\/}
+para2=${2//\//\\\/}
+echo $para1 
+echo $para2 
+echo ------------------------------
+if [ -f $3 ];then
+	sed s/$para1/$para2/g $3
+elif [ -d $3 ];then
+	for fl in $(find $3);do
+		if [ -f $fl ] ;then
+			sed -i s/$para1/$para2/g $fl
+		fi
+	done
+fi
+exit 0
