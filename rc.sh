@@ -6,4 +6,4 @@ alias xseq='/home/yrd/sh.d/xseq.sh'
 echo "--- alias xseq='/home/yrd/sh.d/xseq.sh'"
 fi
 
-source $HOME/sh.d/chshcolor.sh $1
+source /home/yrd/sh.d/chshcolor.sh $1
