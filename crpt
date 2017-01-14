@@ -7,5 +7,5 @@ if [ $# -lt 1 ];then
 	echo "Please input a file to crypt!"
 	exit 1
 fi
-xxd -c1 -g1 $1 | awk '{n="0x"$2;n=255-n;printf("%s %02X %s\n",$1,n,$3)}' | xxd -c1 -g1 -r - "$1.crpt"
+xxd -c1 -g1 $1 | awk '{n=strtonum("0x"$2);n=255-n;printf("%s %02X %s\n",$1,n,$3)}' | xxd -c1 -g1 -r - "$1.crpt"
 exit 0
