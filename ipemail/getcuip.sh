@@ -2,7 +2,7 @@
 TOKEN=`curl "http://192.168.18.1/cu.html" 2>/dev/null | grep -E 'getElementById\("Frm_Logintoken"\)\.value = ' | grep -o -E '[0-9]+'`
 #echo TOKEN=$TOKEN
 if [ -z $TOKEN ]; then
-    echo "TOKEN find err!"
+    echo "TOKEN find err!" >&2
     exit 1
 fi
 
@@ -14,7 +14,7 @@ curl -d "Username=CUAdmin&Password=CUAdmin&Frm_Logintoken=$TOKEN&_cu_url=1"  "ht
 IP_URL=`curl -s "http://192.168.18.1/getpage.gch?pid=1002&nextpage=status_ethwan_if_t.gch" | grep -A15 'PPPoE</td>' | grep -A2 'IP</td>' | grep -o -E '&[&#;0-9]+;'`
 #echo IP_URL = $IP_URL
 if [ -z $IP_URL ]; then
-    echo "IP_URL find err!"
+    echo "IP_URL find err!" >&2
     exit 2
 fi
 #echo -----------------------------111
