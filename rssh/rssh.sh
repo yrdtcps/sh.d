@@ -1,7 +1,7 @@
 #!/bin/bash
 
 getRemoteIP(){
-    local remote_ip=`curl -s https://blog.csdn.net/yrdtjtk/article/details/105064258 | grep -Eo '<p>218.68.[0-9.]+' | grep -Eo '[0-9.]+'`
+    local remote_ip=`curl -s https://blog.csdn.net/yrdtjtk/article/details/105064258 | grep -Eo '<p>[0-9]{1,3}([.][0-9]{1,3}){3}' | grep -Eo '[0-9.]+'`
     echo $remote_ip
 }
 
@@ -36,6 +36,7 @@ while :; do
         echo Remote IP: $REMOTE_IP
         OLD_IP=$REMOTE_IP
         killRunningTask
+        ./expect.sh
         #ssh -NfR 2021:localhost:22 root@$REMOTE_IP -p2020
         autossh -M 2022 -NR 2021:localhost:22 root@$REMOTE_IP -p2020 &
     fi
